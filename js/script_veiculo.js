@@ -6,6 +6,7 @@ const veiculos = [];
 // puxando elementos do DOM
 const formVeiculo = document.querySelector('#form-veiculo');
 const divListaVeiculos = document.querySelector('#div-lista-veiculos');
+const botaoLimparLista = document.querySelector('#btn-limpar-lista');
 
 // capturar evento submit do formulário
 formVeiculo.addEventListener('submit', (evento) => {
@@ -73,3 +74,10 @@ const listarVeiculos = () => {
         `;
     });
 };
+
+// limpar lista de veículos cadastrados
+botaoLimparLista.addEventListener('click', () => {
+    veiculos.length = 0;
+    listarVeiculos();
+});
+

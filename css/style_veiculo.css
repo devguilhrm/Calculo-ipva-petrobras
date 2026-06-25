@@ -5,7 +5,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f1f5f9;
-    color: #1e293b;
+    color: #030406;
     margin: 0;
     padding: 0;
 }
@@ -93,7 +93,7 @@ header p {
 }
 
 button {
-    background-color: #2563eb;
+    background-color: #ff5c5c;
     color: #ffffff;
     border: none;
     border-radius: 10px;
@@ -104,7 +104,7 @@ button {
 }
 
 button:hover {
-    background-color: #1d4ed8;
+    background-color: #542228;
 }
 
 .lista-section h2 {
@@ -154,12 +154,6 @@ button:hover {
     background: #f8fafc;
 }
 
-@media (max-width: 600px) {
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
 .mensagem-status {
     margin-top: 20px;
     padding: 14px 16px;
@@ -170,7 +164,7 @@ button:hover {
 }
 
 .mensagem-status.sucesso {
-    border: 1px solid #34d399;
+    border: 1px solid #ff2525;
     background-color: #ecfdf5;
     color: #065f46;
 }
