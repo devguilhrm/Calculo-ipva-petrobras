@@ -80,3 +80,4 @@ botaoLimparLista.addEventListener('click', () => {
     veiculos.length = 0;
     listarVeiculos();
 });
+
