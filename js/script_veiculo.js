@@ -1,3 +1,5 @@
+import { calcularCustosDoVeiculo } from './script_calculo.js';
+
 // criando array para armazenar veículos
 const veiculos = [];
 
@@ -43,9 +45,21 @@ const listarVeiculos = () => {
     // limpar conteúdo anterior para não duplicar registros
     divListaVeiculos.innerHTML = '';
 
-// percorrer o array veículos com forEach
+    if (veiculos.length === 0) {
+        divListaVeiculos.innerHTML = '<div class="vazio">Nenhum veículo cadastrado ainda.</div>';
+        return;
+    }
+
     veiculos.forEach((elem, i) => {
-        const valorFormatado = elem.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const custos = calcularCustosDoVeiculo(elem);
+        const seguroTexto = custos.seguro.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        let ipvaTexto = '';
+        if (custos.ipvaIsento) {
+            ipvaTexto = 'Isento';
+        } else {
+            ipvaTexto = `R$ ${custos.ipva.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+
         divListaVeiculos.innerHTML += `
             <div class="veiculo-item">
                 <p><strong>Veículo ${i + 1}</strong></p>
@@ -53,8 +67,8 @@ const listarVeiculos = () => {
                 <p>Modelo: ${elem.modelo}</p>
                 <p>Marca: ${elem.marca}</p>
                 <p>Ano: ${elem.ano}</p>
-                <p>Valor: R$ ${valorFormatado}</p>
-                <p>Combustível: ${elem.combustivel}</p>
+                <p>Valor Seguro: R$ ${seguroTexto}</p>
+                <p>Valor IPVA: ${ipvaTexto}</p>
             </div>
         `;
     });
