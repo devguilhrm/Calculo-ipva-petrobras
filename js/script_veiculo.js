@@ -8,9 +8,8 @@ const formVeiculo = document.querySelector('#form-veiculo');
 const divListaVeiculos = document.querySelector('#div-lista-veiculos');
 
 // capturar evento submit do formulário
-formVeiculo.addEventListener('submit', (funcao) => {
-    
-    funcao.preventDefault();
+formVeiculo.addEventListener('submit', (evento) => {
+    evento.preventDefault();
 
     // criando um objeto com os dados registrados no HTML
     const dados = new FormData(formVeiculo);
@@ -47,12 +46,12 @@ const listarVeiculos = () => {
     divListaVeiculos.innerHTML = '';
 
     if (veiculos.length === 0) {
-        divListaVeiculos.innerHTML = '<div cl>ass="vazio"Nenhum veículo cadastrado ainda.</div>';
+        divListaVeiculos.innerHTML = '<div class="vazio">Nenhum veículo cadastrado ainda.</div>';
         return;
     }
 
     veiculos.forEach((elem, i) => {
-        const custos = calcularCustosDoVeiculo(elem.valor, elem.ano, elem.combustivel);
+        const custos = calcularCustosDoVeiculo(elem);
         const seguroTexto = custos.seguro.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         let ipvaTexto = '';
         if (custos.ipvaIsento) {
